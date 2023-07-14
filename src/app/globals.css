@@ -28,3 +28,167 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.phoneContainer {
+  background-image: url("../../public/iPhone-mokup.png");
+  background-image: -webkit-image-set(
+    url("../../public/iPhone-mokup.png") 1x,
+    url("../../public/iPhone-mokup@2x.png") 2x,
+    url("../../public/iPhone-mokup@3x.png") 3x
+  );
+  background-image: image-set(
+    url("../../public/iPhone-mokup.png") 1x,
+    url("../../public/iPhone-mokup@2x.png") 2x,
+    url("../../public/iPhone-mokup@3x.png") 3x
+  );
+  background-size: contain;
+  height: 619px;
+  width: 300px;
+}
+
+@media screen and (max-width: 712px) {
+  .phoneContainer {
+    background-image: url("../../public/iPhone-mokup.png");
+    background-image: -webkit-image-set(
+      url("../../public/iPhone-mokup.png") 1x,
+      url("../../public/iPhone-mokup@2x.png") 2x,
+      url("../../public/iPhone-mokup@3x.png") 3x
+    );
+    background-image: image-set(
+      url("../../public/iPhone-mokup.png") 1x,
+      url("../../public/iPhone-mokup@2x.png") 2x,
+      url("../../public/iPhone-mokup@3x.png") 3x
+    );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 459px;
+    width: 300px;
+  }
+}
+
+.fade-in-image {
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+.fade-out-image {
+  animation: fadeOut 1s;
+  -webkit-animation: fadeOut 1s;
+  -moz-animation: fadeOut 1s;
+  -o-animation: fadeOut 1s;
+  -ms-animation: fadeOut 1s;
+}
+
+.thumb-fade-in-image {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+.thumb-fade-out-image {
+  animation: fadeOut 1s;
+  -webkit-animation: fadeOut 1s;
+  -moz-animation: fadeOut 1s;
+  -o-animation: fadeOut 1s;
+  -ms-animation: fadeOut 1s;
+}
+
+.bg-grey-white {
+  background-color: #eeecec;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
