@@ -41,6 +41,17 @@ export default function Home() {
                   >
                 </div>
 
+                <div className='my-2 w-full flex'>
+                  <div className='w-max h-max'>
+                    <Image
+                      src={'/google-play-badge.png'}
+                      width={200}
+                      height={60}
+                      alt='play store'
+                    />
+                  </div>
+                </div>
+
                 {/** DOWNLOAD BUTTON */}
 
               </div>
@@ -50,7 +61,11 @@ export default function Home() {
           {/** PHONE TEMPLATE */}
 
           <PhoneTemplate />
-          
+
+        </div>
+
+        <div className='w-full flex justify-center p-1 -my-14'>
+          <p className='text-base'><a href='https://facebook.com/carradosite' target='_blank'> © {new Date().getFullYear()} Carrado Technologies Limited. </a> </p>
         </div>
       </div>
     </>
