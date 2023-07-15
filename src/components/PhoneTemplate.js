@@ -109,7 +109,7 @@ export default function PhoneTemplate() {
     return (
         <>
             <div className="flex-grow flex-col lg:w-1/2 w-full lg:justify-start justify-center h-max flex lg:py-1 lg:pl-10 py-1">
-                <div className="lg:w-3/4 lg:justify-start w-full flex justify-center" style={{ height: '70vh' }}>
+                <div className="lg:w-3/4 lg:justify-start w-full flex justify-center" style={{ height: '65vh' }}>
                     <div className="phoneContainer absolute rounded-md lg:-mt-16 mt-5">
                         <div
                             className="lg:rounded-full lg:flex hidden"
