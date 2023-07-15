@@ -16,8 +16,7 @@ export default function Home() {
         </div>
 
         <div
-          className="w-full flex flex-col lg:flex lg:flex-row md:flex lg:my-5 sm:my-20 my-5"
-          style={{ minHeight: '85vh' }}
+          className="w-full h-auto flex flex-grow flex-col lg:flex lg:flex-row md:flex lg:my-5 sm:my-20 my-5"
         >
 
           <div
@@ -41,7 +40,7 @@ export default function Home() {
                   >
                 </div>
 
-                <div className='my-2 w-full flex'>
+                <div className='my-2 lg:w-full md:w-full sm:w-full lg:flex md:flex sm:flex hidden'>
                   <div className='w-max h-max flex mr-10 cursor-pointer'>
                     <Image
                       src={'/google-play-badge.png'}
@@ -56,9 +55,14 @@ export default function Home() {
                       src={'/app_store.svg'}
                       width={200}
                       height={40}
+                      style={{ marginTop: 6 }}
                       alt='play store'
                     />
                   </div>
+                </div>
+
+                <div className='w-full hidden lg:flex md:flex justify-center p-1 my-14'>
+                  <p className='text-base -ml-12'><a href='https://facebook.com/carradosite' target='_blank'> © {new Date().getFullYear()} Carrado Technologies Limited. </a> </p>
                 </div>
 
                 {/** DOWNLOAD BUTTON */}
@@ -67,13 +71,36 @@ export default function Home() {
             </div>
           </div>
 
+          
           {/** PHONE TEMPLATE */}
 
           <PhoneTemplate />
 
         </div>
 
-        <div className='w-full flex justify-center p-1 -my-14'>
+
+        <div className='my-2 w-full lg:hidden md:hidden sm:hidden flex'>
+          <div className='w-max h-max flex mr-10 cursor-pointer'>
+            <Image
+              src={'/google-play-badge.png'}
+              width={200}
+              height={80}
+              alt='play store'
+            />
+          </div>
+
+          <div className='w-max h-max flex' style={{ opacity: 0.3, cursor: 'not-allowed' }} title='Coming soon... Velte for ios will be released soon'>
+            <Image
+              src={'/app_store.svg'}
+              width={200}
+              height={40}
+              alt='play store'
+            />
+          </div>
+        </div>
+
+        
+        <div className='w-full h-full flex-grow flex lg:hidden md:hidden justify-center my-5' style={{ height: '30vh' }}>
           <p className='text-base'><a href='https://facebook.com/carradosite' target='_blank'> © {new Date().getFullYear()} Carrado Technologies Limited. </a> </p>
         </div>
       </div>
