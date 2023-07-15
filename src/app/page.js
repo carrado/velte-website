@@ -42,11 +42,20 @@ export default function Home() {
                 </div>
 
                 <div className='my-2 w-full flex'>
-                  <div className='w-max h-max'>
+                  <div className='w-max h-max flex mr-10 cursor-pointer'>
                     <Image
                       src={'/google-play-badge.png'}
                       width={200}
-                      height={60}
+                      height={80}
+                      alt='play store'
+                    />
+                  </div>
+
+                  <div className='w-max h-max flex' style={{ opacity: 0.3, cursor: 'not-allowed' }} title='Coming soon... Velte for ios will be released soon'>
+                    <Image
+                      src={'/app_store.svg'}
+                      width={200}
+                      height={40}
                       alt='play store'
                     />
                   </div>
