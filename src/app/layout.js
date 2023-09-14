@@ -10,7 +10,7 @@ import { UserIcon } from '@/components/Icons';
 
 const inter = Work_Sans({ subsets: ['latin'], weight: '400' })
 
-export const metadata = {
+const metadata = {
   title: 'Velte',
   description: 'velte real estate properties Nigeria nigeria houses lands',
 }
