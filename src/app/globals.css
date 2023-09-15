@@ -23,11 +23,16 @@ body {
   background: var(--body-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: "Work Sans";
+  font-family: "__Work_Sans_78567c" !important;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  border: none !important;
+  outline: none !important;
 }
 
 input {

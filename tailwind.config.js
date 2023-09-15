@@ -18,6 +18,15 @@ module.exports = withMT({
         'iconColor': '#dc6dd7'
       }
     },
+    menu: {
+      styles: {
+        base: {
+          menu: {
+            bg: "bg-gray-900",
+          }
+        }
+      },
+    }
   },
   plugins: [],
 });
