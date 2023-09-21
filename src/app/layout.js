@@ -83,11 +83,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <title>{ metadata.title }</title>
+      <title>{metadata.title}</title>
       <body className={inter.className}>
-        <Header openNotification={setOpenDrawer} menuOpen={setOpenMenu} />
+        <div className='flex flex-col h-16'>
+          <Header openNotification={setOpenDrawer} menuOpen={setOpenMenu} />
+        </div>
 
-        {children}
+        <div>{children}</div>
 
         {/** NOTIFICATIONS SIDE BAR */}
         <Drawer open={open} onClose={closeNotifications} placement='right' size={400} className="p-4">
@@ -114,7 +116,7 @@ export default function RootLayout({ children }) {
           </div>
         </Drawer>
 
-        {/** MENU SIDE BAR */}
+        {/** MENU SIDE BAR FOR TABLET AND MOBILE PHONES*/}
         <Drawer open={openMenu} onClose={closeMenu} placement='right' overlay={true} size={400} className="p-4">
           <div className="mb-6 flex items-center justify-between">
             <Typography variant="h5" color="blue-gray">
@@ -142,7 +144,7 @@ export default function RootLayout({ children }) {
           <div className='flex flex-col w-full py-3'>
             <Accordion open={explore} icon={<Icon open={explore} />}>
               <AccordionHeader onClick={() => handleOpen()} className='hover:bg-white'>
-                  <span className='text-base'>Explore Velte</span>
+                <span className='text-base'>Explore Velte</span>
               </AccordionHeader>
               <AccordionBody>
                 <div className='w-full flex flex-row'>
