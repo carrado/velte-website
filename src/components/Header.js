@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Avatar, Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
 import Link from 'next/link';
 
+
 export default function Header(props) {
     const [searchInput, setInput] = useState('');
 
@@ -66,7 +67,7 @@ export default function Header(props) {
                             {firstBlockExplore.map((data, index) => (
                                 <Link href={'/'} key={index}>
                                     <MenuItem>
-                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_78567c' }}>{data.title}</span></MenuItem>
+                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_b31760' }}>{data.title}</span></MenuItem>
                                 </Link>
                             ))}
                         </ul>
@@ -74,7 +75,7 @@ export default function Header(props) {
                             {secondBlockExplore.map((data, index) => (
                                 <Link href={'/'} key={index}>
                                     <MenuItem>
-                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_78567c' }}>{data.title}</span></MenuItem>
+                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_b31760' }}>{data.title}</span></MenuItem>
                                 </Link>
                             ))}
                         </ul>
@@ -102,14 +103,14 @@ export default function Header(props) {
                 <Button className='flex items-center gap-3 py-2 px-4 bg-iconColor'>
                     <Link href="/signup" className='flex'>
                         <UserIcon className='mr-3' />
-                        <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_78567c' }}>Sign Up</span>
+                        <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_b31760' }}>Sign Up</span>
                     </Link>
                 </Button>
             </div>
 
             <div className='flex flex-col justify-center ml-2'>
                 <Button variant='gradient' className='flex items-center gap-3 py-2 px-6'>
-                    <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_78567c' }}>Login</span>
+                    <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_b31760' }}>Login</span>
                 </Button>
             </div>
 
