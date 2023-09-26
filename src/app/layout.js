@@ -10,7 +10,7 @@ import { UserIcon } from '@/components/Icons';
 import Link from 'next/link';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
-//import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 
 const inter = Work_Sans({ subsets: ['latin'], weight: '400' });
@@ -23,12 +23,12 @@ const metadata = {
 
 
 export default function RootLayout({ children }) {
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
   // detect route change with useEffect dependency
   useEffect(() => {
-    //console.log('route change with dependency', pathname);
-  }, []);
+    console.log('route change with dependency', pathname);
+  }, [pathname]);
 
 
   const Icon = ({ open }) => {
@@ -97,10 +97,13 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <title>{metadata.title}</title>
         <body className={inter.className}>
-          <div className='flex flex-col h-16'>
-            <Header openNotification={setOpenDrawer} menuOpen={setOpenMenu} />
-          </div>
-
+          {pathname !== '/signup' && pathname !== '/login' ?
+            <div className='flex flex-col h-16'>
+              <Header openNotification={setOpenDrawer} menuOpen={setOpenMenu} />
+            </div>
+            :
+            null
+          }
           <div>{children}</div>
 
           {/** NOTIFICATIONS SIDE BAR */}
