@@ -3,20 +3,33 @@
 import Image from 'next/image'
 import { Burger, SearchIcon, UserIcon } from './Icons'
 import { useState } from 'react'
-import { Avatar, Button, Menu, MenuHandler, MenuItem, MenuList } from '@material-tailwind/react';
+import { Accordion, AccordionBody, AccordionHeader, Avatar, Button, Drawer, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from '@material-tailwind/react';
 import Link from 'next/link';
 
 
 export default function Header(props) {
+
+    const Icon = ({ open }) => {
+        return (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className={`${open ? "rotate-180" : ""} h-5 w-5 transition-transform`}
+            >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        );
+    }
+
+
+    const [open, openDrawer] = useState(false);
+    const [openMenu, openMenuDrawer] = useState(false);
+    const [explore, openExplore] = useState(false);
     const [searchInput, setInput] = useState('');
 
-    const openNotifications = () => {
-        props.openNotification(true)
-    }
-
-    const openMenu = () => {
-        props.menuOpen(true)
-    }
 
     const firstBlockExplore = [
         { title: 'Retail', description: 'Businesses that sell products directly to consumers' },
@@ -92,7 +105,7 @@ export default function Header(props) {
             </div>
 
             <div className='flex flex-col justify-center mx-5'>
-                <span className='text-base cursor-pointer text-white' onClick={openNotifications}>Notifications</span>
+                <span className='text-base cursor-pointer text-white' onClick={() => openDrawer(true)}>Notifications</span>
             </div>
 
             <div className='flex flex-col justify-center ml-5'>
@@ -120,8 +133,120 @@ export default function Header(props) {
 
         <div className='lg:hidden flex flex-grow justify-end md:w-1/4 w-1/4'>
             <div className='flex flex-col justify-center'>
-                <span onClick={openMenu}><Burger /></span>
+                <span onClick={() => openMenuDrawer(true)}><Burger /></span>
             </div>
         </div>
+
+
+
+
+        {/** NOTIFICATIONS SIDE BAR */}
+        <Drawer open={open} onClose={() => openDrawer(false)} placement='right' size={400} className="p-4">
+            <div className="mb-6 flex items-center justify-between">
+                <Typography variant="h5" color="blue-gray">
+                    Notifications
+                </Typography>
+                <IconButton variant="text" color="blue-gray" onClick={() =>  openDrawer(false)}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-5 w-5"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </IconButton>
+            </div>
+        </Drawer>
+
+        {/** MENU SIDE BAR FOR TABLET AND MOBILE PHONES*/}
+        <Drawer open={openMenu} onClose={() => openMenuDrawer(false)} placement='right' overlay={true} size={400} className="p-4">
+            <div className="mb-6 flex items-center justify-between">
+                <Typography variant="h5" color="blue-gray">
+                    {/*Menu*/}
+                    <Avatar src="/public-avatar.png" size='sm' alt="CA" />
+                    <span className='text-base mx-3'>Chukwuemeka Anyanwu</span>
+                </Typography>
+                <IconButton variant="text" color="blue-gray" onClick={() => openMenuDrawer(false)}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-5 w-5"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </IconButton>
+            </div>
+            <div className='flex flex-col w-full py-3'>
+                <Accordion open={explore} icon={<Icon open={explore} />}>
+                    <AccordionHeader onClick={() => handleOpen()} className='hover:bg-white'>
+                        <span className='text-base'>Explore Velte</span>
+                    </AccordionHeader>
+                    <AccordionBody>
+                        <div className='w-full flex flex-row'>
+                            <div className='flex flex-col w-1/2'>
+                                {firstBlockExplore.map((data, index) => (
+                                    <Link href={'/'} key={index} className='p-2 flex flex-col'>
+                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_78567c' }}>{data.title}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                            <div className='flex flex-col w-1/2'>
+                                {secondBlockExplore.map((data, index) => (
+                                    <Link href={'/'} key={index} className='p-2 flex flex-col'>
+                                        <span className='text-sm' style={{ fontFamily: '__Work_Sans_78567c' }}>{data.title}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </AccordionBody>
+                </Accordion>
+
+                <div className='flex flex-col justify-center mt-5'>
+                    <span className='text-base'>Rankings</span>
+                </div>
+                <div className='border my-3' />
+
+                <div className='flex flex-col justify-center mt-5'>
+                    <span className='text-base'>Wallet</span>
+                </div>
+                <div className='border my-3' />
+
+                <div className='flex flex-col justify-center mt-5'>
+                    <span className='text-base'>Notifications</span>
+                </div>
+                <div className='border my-3' />
+
+                <div className='flex flex-col justify-center mt-5'>
+                    <span className='text-base'>My Profile</span>
+                </div>
+                <div className='border my-3' />
+
+                <div className='flex mt-2'>
+                    <Button className='flex items-center gap-3 py-3 px-4 w-max bg-iconColor'>
+                        <UserIcon />
+                        <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_78567c' }}>Sign Up</span>
+                    </Button>
+
+                    <Button variant='gradient' className='flex items-center gap-3 py-3 px-4 w-max ml-4'>
+                        <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_78567c' }}>Login</span>
+                    </Button>
+                </div>
+            </div>
+        </Drawer>
+
     </div>
 }
