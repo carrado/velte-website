@@ -4,10 +4,7 @@ import Header from '@/components/Header'
 import './globals.css'
 import 'animate.css';
 import { Work_Sans } from 'next/font/google'
-import { Accordion, AccordionBody, AccordionHeader, Avatar, Button, Drawer, IconButton, Typography } from '@material-tailwind/react';
-import { useEffect, useState } from 'react';
-import { UserIcon } from '@/components/Icons';
-import Link from 'next/link';
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
 import { usePathname } from 'next/navigation';
@@ -62,6 +59,7 @@ export default function RootLayout({ children }) {
 
 
   return (
+    <Provider store={store}>
     <html lang="en">
       <title>{metadata.title}</title>
       <body className={inter.className}>
@@ -72,10 +70,9 @@ export default function RootLayout({ children }) {
           :
           null
         }
-        <Provider store={store}>
           <div>{children}</div>
-        </Provider>
       </body>
-    </html>
+      </html>
+    </Provider>
   )
 }

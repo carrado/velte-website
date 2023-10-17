@@ -123,7 +123,9 @@ export default function Header(props) {
 
             <div className='flex flex-col justify-center ml-2'>
                 <Button variant='gradient' className='flex items-center gap-3 py-2 px-6'>
-                    <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_b31760' }}>Login</span>
+                    <Link href="/login" className='flex'>
+                        <span className='text-base capitalize' style={{ fontFamily: '__Work_Sans_b31760' }}>Login</span>
+                    </Link>
                 </Button>
             </div>
 
@@ -146,7 +148,7 @@ export default function Header(props) {
                 <Typography variant="h5" color="blue-gray">
                     Notifications
                 </Typography>
-                <IconButton variant="text" color="blue-gray" onClick={() =>  openDrawer(false)}>
+                <IconButton variant="text" color="blue-gray" onClick={() => openDrawer(false)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

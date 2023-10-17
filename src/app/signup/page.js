@@ -1,7 +1,9 @@
 "use client";
 
+import Logo from "@/components/Logo";
 import { Button, Checkbox, Input, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Signup() {
@@ -13,17 +15,12 @@ export default function Signup() {
         >
             <div className="w-full h-full flex lg:flex-row md:flex-row flex-col">
                 <div className="flex lg:w-1/2 md:w-1/2 w-full flex-grow h-full bg-office-vlte bg-blend-darken">
-                    <div className="lg:flex md:flex sm:flex flex lg:w-1/5 md:w-1/4 w-1/4 h-9 z-10 my-3 mx-3">
-                        <Image src="/velte.png" width={43} height={43} alt='Velte' />
-                        <div className="lg:flex md:flex hidden flex-col justify-end -ml-2">
-                            <p className="text-base font-semibold text-white">elte</p>
-                        </div>
-                    </div>
+                    <Logo />
                     <div className="absolute w-full h-full" style={{ backgroundColor: 'rgba(0, 0, 0, .8)' }}></div>
-                    <div className="flex w-full h-full flex-col justify-center p-5">
+                    <div className="flex w-full h-full flex-col justify-center lg:p-5 md:p-5 lg:relative md:relative absolute p-8">
                         <div className="flex flex-row justify-end">
                             <div className="lg:w-3/4 md:w-3/4 w-full flex flex-col my-10 div-right">
-                                <div className="lg:w-3/4 md:w-3/4 w-full my-4 ml-5">
+                                <div className="lg:w-3/4 md:w-3/4 w-full my-4 lg:ml-5 md:ml-5">
                                     <p
                                         className="text-lg"
                                         style={{ lineHeight: "38px" }}
@@ -115,9 +112,9 @@ export default function Signup() {
                                             </Button>
                                             <Typography color="gray" className="mt-4 text-center font-normal" style={{ fontFamily: '__Work_Sans_b31760' }}>
                                                 Already have an account?{" "}
-                                                <a href="#" className="font-medium text-white">
+                                                <Link href="/login" className="font-medium text-white">
                                                     Sign In
-                                                </a>
+                                                </Link>
                                             </Typography>
                                         </form>
                                     </div>
