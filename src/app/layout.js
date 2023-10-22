@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
 import { usePathname } from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const inter = Work_Sans({ subsets: ['latin'], weight: '400' });
@@ -71,6 +73,18 @@ export default function RootLayout({ children }) {
           null
         }
           <div>{children}</div>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
       </body>
       </html>
     </Provider>

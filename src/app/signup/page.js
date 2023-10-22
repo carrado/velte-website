@@ -1,13 +1,63 @@
 "use client";
 
 import Logo from "@/components/Logo";
+import { SET_USER_DATA } from "@/reducers/authenticateSlice";
+import { AuthenticationAPI } from "@/services/authenticationAPI";
+import { signUpFormSchema } from "@/validations/appValidations";
 import { Button, Checkbox, Input, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
-import Image from "next/image";
+import { useFormik } from "formik";
 import Link from "next/link";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function Signup() {
     const [accountType, setAccountType] = useState('Select Account Type');
+    const dispatch = useDispatch();
+
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            email: "",
+            username: "",
+            password: "",
+            acceptTermsandConditions: false
+        },
+
+        // Pass the Yup schema to validate the form
+        validationSchema: signUpFormSchema,
+
+        // Handle form submission
+        onSubmit: async ({ name, email, username, password }) => {
+            // Make a request to backend to store the data
+            let payload = {
+                name: name,
+                email: email,
+                accountType: accountType,
+                username: username,
+                password: password
+            };
+
+            AuthenticationAPI.$_createUserAccount(payload).then((response) => {
+                const { password, createdAt, updatedAt, ...rest } = response.data.user;
+                dispatch(SET_USER_DATA(rest));
+                toast.success(response.data.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            });
+        },
+    });
+
+    // Destructure the formik object
+    const { errors, touched, values, handleChange, handleSubmit } = formik;
+
 
     return (
         <div
@@ -44,10 +94,14 @@ export default function Signup() {
 
                                 <div className="my-5 w-full flex justify-center">
                                     <div className="lg:w-2/3 md:w-2/3 w-full flex p-4 justify-center">
-                                        <form className="mb-2 w-80 max-w-screen-lg sm:w-96">
+                                        <form className="mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                                             <div className="mb-4 flex flex-col gap-6">
-                                                <Input size="lg" color="white" label="Name" />
-                                                <Input size="lg" color="white" label="Email" />
+                                                <Input size="lg" color="white" label="Name" name="name" autoComplete="off" onChange={handleChange}
+                                                    error={errors.name && touched.name} value={values.name}
+                                                />
+                                                <Input size="lg" color="white" label="Email" name="email"  autoComplete="off" onChange={handleChange}
+                                                    error={errors.email && touched.email} value={values.email} />
+                                                {errors.email && touched.email && <span className="-mt-3 text-red-700">{errors.email}</span>}
                                                 <Menu
                                                 >
                                                     <MenuHandler>
@@ -83,10 +137,17 @@ export default function Signup() {
                                                     <Input
                                                         label="Username"
                                                         color="white"
-                                                        className="rounded-l-none !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                                        className="rounded-l-none"
+                                                        name="username" onChange={handleChange}
+                                                        error={errors.username && touched.username} value={values.username}
+                                                        autoComplete="off"
                                                     />
                                                 </div>
-                                                <Input type="password" color="white" size="lg" label="Password" />
+                                                <Input type="password" color="white" size="lg" label="Password"
+                                                    name="password" onChange={handleChange}
+                                                    error={errors.password && touched.password} value={values.password}
+                                                />
+                                                {errors.password && touched.password && <span className="-mt-3 text-red-700">{errors.password}</span>}
                                             </div>
                                             <Checkbox
                                                 label={
@@ -106,8 +167,12 @@ export default function Signup() {
                                                     </Typography>
                                                 }
                                                 containerProps={{ className: "-ml-2.5" }}
+                                                className={(errors.acceptTermsandConditions && touched.acceptTermsandConditions) ? 'border-red' : null}
+                                                type="checkbox"
+                                                name="acceptTermsandConditions" onChange={handleChange}
+                                                error={errors.acceptTermsandConditions && touched.acceptTermsandConditions} value={values.acceptTermsandConditions}
                                             />
-                                            <Button className="mt-6" fullWidth style={{ fontFamily: '__Work_Sans_b31760' }}>
+                                            <Button className="mt-6" type="submit" fullWidth style={{ fontFamily: '__Work_Sans_b31760' }}>
                                                 Register
                                             </Button>
                                             <Typography color="gray" className="mt-4 text-center font-normal" style={{ fontFamily: '__Work_Sans_b31760' }}>

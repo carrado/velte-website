@@ -1,9 +1,9 @@
+import authenticateSlice from "@/reducers/authenticateSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import topLoadingBar from "@/reducers/topLoadingBar";
 
 const store = configureStore({
     reducer: {
-        todo: topLoadingBar,
+        userData: authenticateSlice
     },
 });
 

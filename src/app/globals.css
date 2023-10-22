@@ -30,6 +30,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.border-red {
+  border: 1px solid red !important;
+}
+
 ul {
   border: none !important;
   outline: none !important;
@@ -38,6 +42,7 @@ ul {
 input {
   background-color: transparent;
   outline: none;
+  font-family: __Work_Sans_b31760 !important;
 }
 
 .bg-office-vlte {
