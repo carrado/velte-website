@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     const payload = {
-      content: 'Create a christmas message for my love, Precious with a christmas image link written by her husband Baby boo not more than 100 words'
+      content: 'Create a christmas message for my boss written by Emeka not more than 100 words'
     }
     getChristmasGreeting(payload).then((response) => {
       setMessage(response.data.response.candidates[0].content.parts[0].text)
