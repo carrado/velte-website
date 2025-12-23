@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: rgba(247, 107, 16, 1);
+  --color-secondary: rgba(251, 190, 71, 1);
+  --color-accent: rgba(6, 182, 212, 1);
+  --color-error: rgba(223, 63, 64, 1);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom styles for the gradient text */
+.bg-gradient-text {
+  background: linear-gradient(90deg, 
+    var(--color-primary), 
+    var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Add this to your CSS file */
+@keyframes backgroundFade {
+  0%, 25% {
+    opacity: 1;
+  }
+  30%, 55% {
+    opacity: 0;
+  }
+  60%, 85% {
+    opacity: 0;
+  }
+  90%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Apply different delays to each image */
+.bg-image-1 {
+  animation: backgroundFade 16s infinite;
+}
+.bg-image-2 {
+  animation: backgroundFade 16s infinite 4s;
+}
+.bg-image-3 {
+  animation: backgroundFade 16s infinite 8s;
+}
+.bg-image-4 {
+  animation: backgroundFade 16s infinite 12s;
+}
