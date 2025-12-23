@@ -28,11 +28,13 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div id="footer-brand">
               <h3 className="text-2xl font-bold mb-4">
-                <img
-                  src="https://res.cloudinary.com/dbhpul04t/image/upload/v1766001844/velte_ijulb7ijulb7ijul-removebg-preview_h3d6xw.png"
-                  alt="Velte"
-                  className="w-20"
-                />
+                <Link to={'/'} className='w-full'>
+                  <img
+                    src="https://res.cloudinary.com/dbhpul04t/image/upload/v1766001844/velte_ijulb7ijulb7ijul-removebg-preview_h3d6xw.png"
+                    alt="Velte"
+                    className="w-20"
+                  />
+                </Link>
               </h3>
               <p className="text-gray-400 mb-6">
                 Your ultimate event platform for discovering, creating, and
@@ -121,12 +123,9 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <span className="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                    Help Center
-                  </span>
-                </li>
-                <li>
-                  <span className="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                    Privacy Policy
+                    <Link to={'/privacy-policy'} className='w-full'>
+                      Privacy Policy
+                    </Link>
                   </span>
                 </li>
                 <li>
@@ -138,7 +137,9 @@ const Footer = () => {
                 </li>
                 <li>
                   <span className="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                    Community Guidelines
+                    <Link to={'/community-guidelines'} className='w-full'>
+                      Community Guidelines
+                    </Link>
                   </span>
                 </li>
               </ul>
